@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProyectoInmobiliariaMVCPrimera_Entrega.Models.Alquiler>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Alquileres</h1>
+
+<p>
+    <a asp-action="Create">Crear alquiler</a>
+</p>
+<section class="pricing py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Free Tier -->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <div class="img-fluid">
+                                <img src="https://previews.123rf.com/images/valentint/valentint1310/valentint131000801/22675360-icono-met%C3%A1lico-con-dise%C3%B1o-blanco-sobre-fondo-fucsia.jpg" class="w-100">
+                            </div>
+                            <hr>
+                            <hr>Propiedad
+                            <ul class="fa-ul">
+
+
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Direccion:  @Html.DisplayFor(modelItem => item.inmueble.Direccion)</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Costo:  @Html.DisplayFor(modelItem => item.inmueble.Costo)</li>
+                            </ul>
+                            <hr>Inquilino
+                            <ul class="fa-ul">
+
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Nombre: @Html.DisplayFor(modelItem => item.inquilino.Nombre)</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Apellido:    @Html.DisplayFor(modelItem => item.inquilino.Apellido)</li>
+                            </ul>
+                            <hr>Alquiler
+                            <ul class="fa-ul">
+
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Descripcion:   @Html.DisplayFor(modelItem => item.Descripcion)</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Alta:  @Html.DisplayFor(modelItem => item.FechaAlta)</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Baja:  @Html.DisplayFor(modelItem => item.FechaBaja)</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Superficie: @Html.DisplayFor(modelItem => item.Monto)</li>
+
+                            </ul>
+                            @*<a href="" class="btn btn-block btn-primary text-uppercase" ></a>*@
+
+                            <hr>
+                            <ul class="fa-ul">
+                                <li class="btn btn-primary text-light">
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.AlquilerId })
+                                </li>
+                                @*<li class="btn btn-info text-light">
+                                        @Html.ActionLink("Details", "Details", new { id = item.AlquilerId })
+                                    </li>*@
+                                <li class="btn btn-danger text-light">
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.AlquilerId })
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

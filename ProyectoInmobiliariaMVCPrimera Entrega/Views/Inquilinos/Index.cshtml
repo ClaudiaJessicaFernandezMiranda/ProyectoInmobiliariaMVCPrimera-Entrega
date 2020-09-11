@@ -2,64 +2,72 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<h1>Inquilino</h1>
-
-<p>
-    <a asp-action="Create">Crear Inquilino</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            @*<th>
+<div class="mt-5 marginTop">
+    <div class="card bg-light border-primary mb-3">
+        <div class="card-header bg-light">
+            <a class="btn btn-primary text-white mr-2" asp-action="Create">Crear Inquilino</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-primary">Lista actual de propietarios</h5>
+            <table class="table table-hover table-bordered">
+                <thead class="table-danger">
+                    <tr>
+                        @*<th>
             @Html.DisplayNameFor(model => model.InquilinoId)
         </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Dni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Dni)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Apellido)
+                        </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            @*<td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Telefono)
+                        </th>
+                        <th></th>
+                    </tr>
+                        
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        @*<td>
             @Html.DisplayFor(modelItem => item.InquilinoId)
         </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Dni)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dni)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Apellido)
+                        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.InquilinoId }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.InquilinoId })
-            </td>
-        </tr>}
-    </tbody>
-</table>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefono)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.InquilinoId }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.InquilinoId })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

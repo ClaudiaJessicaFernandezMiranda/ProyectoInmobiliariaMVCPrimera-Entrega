@@ -39,7 +39,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 
         // POST: Inquilinos/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create(Inquilino i)
         {
             try
