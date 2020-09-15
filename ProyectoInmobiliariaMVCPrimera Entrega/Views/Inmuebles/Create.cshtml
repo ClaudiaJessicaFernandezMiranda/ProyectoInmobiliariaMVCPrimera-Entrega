@@ -4,16 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Crear Inmueble</h1>
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <h4 class="card-title text-primary mt-2">Crear Inmueble</h4>
+    </div>
+    <div class="card-body">
 
-@*<h4>Inmueble</h4>*@
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            
+
             <div class="form-group">
                 <label asp-for="Direccion" class="control-label"></label>
                 <input asp-for="Direccion" class="form-control" />
@@ -57,7 +57,7 @@
                 <select class="form-control" name="PropietarioId">
                     @foreach (var item in (IList<Propietario>)ViewBag.Propietarios)
                     {
-                        <option value="@item.PropietarioId">@(item.Nombre +" "+ item.Apellido)</option>
+                        <option value="@item.PropietarioId">@(item.Nombre + " " + item.Apellido)</option>
                     }
                 </select>
                 <span asp-validation-for="PropietarioId" class="text-danger"> </span>
@@ -69,14 +69,14 @@
                 <a class="btn btn-secondary" asp-action="Index">Volver a Lista</a>
             </div>
         </form>
+
+
     </div>
 </div>
 
-@*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
 
-@*@section Scripts {
+
+@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
+}
 

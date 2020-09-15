@@ -4,19 +4,19 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar Inmueble</h1>
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <h4 class="card-title text-primary mt-2">Editar Inmueble</h4>
+    </div>
+    <div class="card-body">
 
-@*<h4>Inmueble</h4>*@
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-            <label asp-for="InmuebleId" class="control-label"></label>
-            <input asp-for="InmuebleId" class="form-control" />
-            <span asp-validation-for="InmuebleId" class="text-danger" type="hidden"></span>
-        </div>
+                <label asp-for="InmuebleId" class="control-label"></label>
+                <input asp-for="InmuebleId" class="form-control" />
+                <span asp-validation-for="InmuebleId" class="text-danger" type="hidden"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Direccion" class="control-label"></label>
                 <input asp-for="Direccion" class="form-control" />
@@ -53,8 +53,6 @@
                 <span asp-validation-for="Longitud" class="text-danger"></span>
             </div>
 
-
-
             <div class="form-group">
                 <label class="control-label">Propietario</label>
                 <select class="form-control" name="PropietarioId">
@@ -66,16 +64,14 @@
                 <span asp-validation-for="PropietarioId" class="text-danger"> </span>
             </div>
 
-
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Editar" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Volver a Lista</a>
             </div>
         </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a Lista</a>
+
+    </div>
 </div>
 
 @section Scripts {

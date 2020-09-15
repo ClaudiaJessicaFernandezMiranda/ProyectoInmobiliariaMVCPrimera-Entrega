@@ -2,11 +2,12 @@
 
 @{ ViewData["Title"] = "Create"; }
 
-<h1>Crear Inquilino</h1>
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <h4 class="card-title text-primary mt-2">Crear Inquilino</h4>
+    </div>
+    <div class="card-body">
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -36,14 +37,12 @@
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+                <a class="btn btn-secondary" asp-action="Index">Volver a Lista</a>
             </div>
         </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a la Lista</a>
+    </div>
 </div>
 
 @section Scripts {

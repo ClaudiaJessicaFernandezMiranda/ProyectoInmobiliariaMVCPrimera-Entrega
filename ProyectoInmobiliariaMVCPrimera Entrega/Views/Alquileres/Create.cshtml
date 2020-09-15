@@ -4,12 +4,12 @@
     ViewData["Title"] = "Create";
 }
 
-    <h1>Crear Alquiler</h1>
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <h4 class="card-title text-primary mt-2">Crear Alquiler</h4>
+    </div>
+    <div class="card-body">
 
-@*<h4>Alquiler</h4>*@
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -43,7 +43,7 @@
                 <select class="form-control" name="InmuebleId">
                     @foreach (var iteminm in (IList<Inmueble>)ViewBag.Inmuebless)
                     {
-                    <option value="@iteminm.InmuebleId">Direccion: @(iteminm.Direccion), Costo: $@(iteminm.Costo)</option>
+                        <option value="@iteminm.InmuebleId">Direccion: @(iteminm.Direccion), Costo: $@(iteminm.Costo)</option>
                     }
                 </select>
                 <span asp-validation-for="InmuebleId" class="text-danger"> </span>
@@ -54,7 +54,7 @@
                 <select class="form-control" name="InquilinoId">
                     @foreach (var iteminq in (IList<Inquilino>)ViewBag.Inquilinoss)
                     {
-                    <option value="@iteminq.InquilinoId">@(iteminq.Nombre) @(iteminq.Apellido)</option>
+                        <option value="@iteminq.InquilinoId">@(iteminq.Nombre) @(iteminq.Apellido)</option>
                     }
                 </select>
                 <span asp-validation-for="InquilinoId" class="text-danger"> </span>
@@ -62,12 +62,11 @@
 
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Volver a Lista</a>
             </div>
         </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a Lista</a>
+
+    </div>
 </div>
 

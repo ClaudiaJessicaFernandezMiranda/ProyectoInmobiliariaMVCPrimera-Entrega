@@ -3,65 +3,64 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Alquileres</h1>
-
-<p>
-    <a asp-action="Create">Crear alquiler</a>
-</p>
-<section class="pricing py-5">
-    <div class="container">
-        <div class="row">
-            <!-- Free Tier -->
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <div class="img-fluid">
-                                <img src="https://previews.123rf.com/images/valentint/valentint1310/valentint131000801/22675360-icono-met%C3%A1lico-con-dise%C3%B1o-blanco-sobre-fondo-fucsia.jpg" class="w-100">
-                            </div>
-                            <hr>
-                            <hr>Propiedad
-                            <ul class="fa-ul">
-
-
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Direccion:  @Html.DisplayFor(modelItem => item.inmueble.Direccion)</li>
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Costo:  @Html.DisplayFor(modelItem => item.inmueble.Costo)</li>
-                            </ul>
-                            <hr>Inquilino
-                            <ul class="fa-ul">
-
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Nombre: @Html.DisplayFor(modelItem => item.inquilino.Nombre)</li>
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Apellido:    @Html.DisplayFor(modelItem => item.inquilino.Apellido)</li>
-                            </ul>
-                            <hr>Alquiler
-                            <ul class="fa-ul">
-
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Descripcion:   @Html.DisplayFor(modelItem => item.Descripcion)</li>
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Alta:  @Html.DisplayFor(modelItem => item.FechaAlta)</li>
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Baja:  @Html.DisplayFor(modelItem => item.FechaBaja)</li>
-                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Superficie: @Html.DisplayFor(modelItem => item.Monto)</li>
-
-                            </ul>
-                            @*<a href="" class="btn btn-block btn-primary text-uppercase" ></a>*@
-
-                            <hr>
-                            <ul class="fa-ul">
-                                <li class="btn btn-primary text-light">
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.AlquilerId })
-                                </li>
-                                @*<li class="btn btn-info text-light">
-                                        @Html.ActionLink("Details", "Details", new { id = item.AlquilerId })
-                                    </li>*@
-                                <li class="btn btn-danger text-light">
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.AlquilerId })
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            }
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <a class="btn btn-primary" asp-action="Create">Crear alquiler</a>
+            </div>
+            <input type="text" class="form-control" id="inputBusquedaAlquiler" placeholder="Buscar alquiler..">
         </div>
     </div>
-</section>
+    <div class="card-body">
+    
+        <h5 class="card-title text-primary">Lista actual de alquileres</h5>
+
+        <div class="row scrollspy-example" id="listAlquileres">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 contenedor">
+                    <div class="card border-primary">
+                        <img class="border-bottom border-primary w-100" src="https://images7.alphacoders.com/436/thumb-1920-436350.jpg">
+                        @*<div class="card-header bg-transparent border-primary"> </div>*@
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.inmueble.Direccion)</h5>
+
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+
+                            <div id="MM@(item.AlquilerId)" class="collapse">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Costo:  @Html.DisplayFor(modelItem => item.inmueble.Costo)</li>
+                                    <li class="list-group-item">
+                                        Inquilino: @Html.DisplayFor(modelItem => item.inquilino.Nombre) @Html.DisplayFor(modelItem => item.inquilino.Apellido)
+                                    </li>
+
+                                </ul>
+
+
+
+
+                            </div>
+                            <div class="btn-group mt-3">                           
+                                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#MM@(item.AlquilerId)">Ver más</button>
+                                <a asp-action="Edit" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary"><i class="fas fa-minus-square"></i></a>
+                            </div>
+                            <div class="mt-2">
+                                <span class="badge badge-primary">Casa @Html.DisplayFor(modelItem => item.inmueble.Tipo)</span>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer bg-transparent border-primary">@Html.DisplayFor(modelItem => item.FechaAlta) Hasta @Html.DisplayFor(modelItem => item.FechaBaja)</div>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+
+    </div>
+</div>
+

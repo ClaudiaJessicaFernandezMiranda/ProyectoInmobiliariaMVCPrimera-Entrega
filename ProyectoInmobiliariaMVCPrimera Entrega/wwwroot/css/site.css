@@ -1,8 +1,71 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+@font-face {
+    font-family: Roboto;
+    font-weight: 200;
+    src: local(Roboto Thin), url("../font/roboto/Roboto-Thin.eot");
+    src: url("../font/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Thin.woff2") format("woff2"), url("../font/roboto/Roboto-Thin.woff") format("woff"), url("../font/roboto/Roboto-Thin.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 300;
+    src: local(Roboto Light), url("../font/roboto/Roboto-Light.eot");
+    src: url("../font/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Light.woff2") format("woff2"), url("../font/roboto/Roboto-Light.woff") format("woff"), url("../font/roboto/Roboto-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 400;
+    src: local(Roboto Regular), url("../font/roboto/Roboto-Regular.eot");
+    src: url("../font/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Regular.woff2") format("woff2"), url("../font/roboto/Roboto-Regular.woff") format("woff"), url("../font/roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url("../font/roboto/Roboto-Medium.eot");
+    src: url("../font/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Medium.woff2") format("woff2"), url("../font/roboto/Roboto-Medium.woff") format("woff"), url("../font/roboto/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 600;
+    src: url("../font/roboto/Roboto-Bold.eot");
+    src: url("../font/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../font/roboto/Roboto-Bold.woff2") format("woff2"), url("../font/roboto/Roboto-Bold.woff") format("woff"), url("../font/roboto/Roboto-Bold.ttf") format("truetype");
+}
+/*ScrollReveal*/
+html.sr .load-hidden {
+    visibility: hidden;
+}
+.scrollspy-example {
+    position: relative;
+    overflow-y: scroll; 
+    height:38rem;
+    scrollbar-width: thin;
+    scrollbar-color: #155d9d #F5F5F5;
+}
 
 .bg-primary {
     background-color: #f6648C !important;
+    background: linear-gradient(to bottom right, #f6648c 0%, #f9999c 100%);
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #f6648C;
+    border-color: #f6648C;
+}
+
+.page-link:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(246, 100, 140, 0.5);
 }
 
 .text-primary {
@@ -12,7 +75,7 @@ for details on configuring this project to bundle and minify static web assets. 
 .border-primary {
     border-color: #f6648C !important;
 }
-
+/*BOTON PRIMARIO*/
 .btn-primary {
     color: #fff;
     background-color: #f6648C;
@@ -46,6 +109,7 @@ for details on configuring this project to bundle and minify static web assets. 
         .show > .btn-primary.dropdown-toggle:focus {
             box-shadow: 0 0 0 0.2rem rgba(246, 100, 140, 0.5);
         }
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -58,9 +122,14 @@ a.navbar-brand {
     background-size: cover;
     background-position: center top;
 }
-.marginTop {
-    margin-top:500px;
+
+.mt-6 {
+    margin-top: 4rem;
 }
+.mt-7 {
+    margin-top:5rem;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -88,23 +157,29 @@ button.accept-policy {
   line-height: inherit;
 }
 
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
+html,
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    background-color: #f8f9fa;
 }

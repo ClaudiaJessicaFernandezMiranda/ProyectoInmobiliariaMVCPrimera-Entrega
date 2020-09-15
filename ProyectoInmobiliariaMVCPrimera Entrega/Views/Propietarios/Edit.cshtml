@@ -1,11 +1,12 @@
 ﻿@model ProyectoInmobiliariaMVCPrimera_Entrega.Models.Propietario
- @{ ViewData["Title"] = "Edit"; }
+@{ ViewData["Title"] = "Edit"; }
 
-<h1>Editar Propietario</h1>
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <h4 class="card-title text-primary mt-2">Editar Propietario</h4>
+    </div>
+    <div class="card-body">
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -33,7 +34,7 @@
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
-            </div> 
+            </div>
 
             <div class="form-group">
                 <label asp-for="Telefono" class="control-label"></label>
@@ -42,14 +43,13 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Editar" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Volver a Lista</a>
             </div>
         </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a la lista</a>
+
+    </div>
 </div>
 
 @section Scripts {

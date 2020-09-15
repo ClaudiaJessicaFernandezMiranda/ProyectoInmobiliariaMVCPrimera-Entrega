@@ -2,18 +2,19 @@
 
 @{ ViewData["Title"] = "Edit"; }
 
-<h1>Editar Inquilino</h1>
+<div class="card bg-light border-primary">
+    <div class="card-header bg-light">
+        <h4 class="card-title text-primary mt-2">Editar Inquilino</h4>
+    </div>
+    <div class="card-body">
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="InquilinoId" class="control-label"></label>
+    
+               
                 <input asp-for="InquilinoId" class="form-control" type="hidden" />
-                <span asp-validation-for="InquilinoId" class="text-danger"></span>
-            </div>
+             
+         
             <div class="form-group">
                 <label asp-for="Dni" class="control-label"></label>
                 <input asp-for="Dni" class="form-control" />
@@ -41,14 +42,12 @@
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Editar" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Volver a Lista</a>
             </div>
         </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Volver a la lista</a>
+    </div>
 </div>
 
 @section Scripts {
