@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,8 @@ using ProyectoInmobiliariaMVCPrimera_Entrega.Models;
 
 namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 {
+    [Authorize]
+
     public class InquilinosController : Controller
     {
         private readonly IConfiguration configuration;
@@ -39,7 +42,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 
         // POST: Inquilinos/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Inquilino i)
         {
             try
@@ -81,6 +84,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         }
 
         // GET: Inquilinos/Delete/5
+        [Authorize(Policy = "Administrador")]
+
         public ActionResult Delete(int id)
         {
             var p = repositorioInquilino.ObtenerPorId(id);
@@ -90,6 +95,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         // POST: Inquilinos/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrador")]
         public ActionResult Delete(int id, Inquilino entidad)
         {
             try

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,12 +20,19 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(options =>
+               {
+                   options.LoginPath = "/Usuarios/Login";//a donde redirigir para login
+                   options.LogoutPath = "/Usuarios/Logout";//idem para logout
+                   options.AccessDeniedPath = "/Home/Restringido";//idem para rec restringidos
+               });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -31,6 +40,13 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrador", policy =>
+                policy.RequireRole("Administrador", "SuperAdministrador")
+                //policy.RequireClaim(ClaimTypes.Role, "Administrador")
+                );
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -52,6 +68,9 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+
+            app.UseAuthentication();//habilitar autentificacion
 
             app.UseMvc(routes =>
             {

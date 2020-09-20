@@ -10,6 +10,7 @@ using ProyectoInmobiliariaMVCPrimera_Entrega.Models;
 
 namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 {
+    [Authorize]
     public class InmueblesController : Controller
     {
         private readonly IConfiguration configuration;
@@ -44,6 +45,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 
         // POST: Inmuebles/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public ActionResult Create(Inmueble i)
         {
             try
@@ -78,6 +81,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 
         // POST: Inmuebles/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int id, Inmueble i)
         {
             try
@@ -94,6 +99,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         }
 
         // GET: Inmuebles/Delete/5
+        [Authorize(Policy = "Administrador")]
+
         public ActionResult Delete(int id)
         {
             var i = repositorioInmueble.ObtenerPorId(id);
@@ -103,8 +110,9 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 
         // POST: Inmuebles/Delete/5
         [HttpPost]
-      
-        //Delete(int id)
+        [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrador")]
+
         public ActionResult Delete(int id, Inmueble entidad)
         {
             try

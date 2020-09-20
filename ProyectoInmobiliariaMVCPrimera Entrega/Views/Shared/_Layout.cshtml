@@ -28,33 +28,53 @@
                 <div class="navbar-collapse collapse justify-content-center">
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Propietarios" asp-action="Index">Propietario</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Inquilinos" asp-action="Index">Inquilino</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Inmuebles" asp-action="Index">Inmueble</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Alquileres" asp-action="Index">Alquiler</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light font-weight-bold" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Extras
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
-                                <a class="dropdown-item px-2" href="#more">EJEMPLO1</a>
-                                <a class="dropdown-item px-2" href="#more">EJEMPLO2</a>
-                                <a class="dropdown-item px-2" href="#more">EJEMPLO3</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item px-2" href="#more">Todo</a>
-                            </div>
-                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            //Entra al login
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
+                            </li>
+
+                        }
+                        else
+                        {
+
+                            @if (User.IsInRole("Administrador") || User.IsInRole("SuperAdministrador"))
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Propietarios" asp-action="Index">Propietario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Inquilinos" asp-action="Index">Inquilino</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Inmuebles" asp-action="Index">Inmueble</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Alquileres" asp-action="Index">Alquiler</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light font-weight-bold" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Extras
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
+                                    <a class="dropdown-item px-2">@User.Identity.Name</a>
+                                    <a class="dropdown-item px-2" asp-controller="Usuarios" asp-action="Logout">Salir</a>
+                                    <a class="dropdown-item px-2">EJEMPLO3</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item px-2" href="#more">Todo</a>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

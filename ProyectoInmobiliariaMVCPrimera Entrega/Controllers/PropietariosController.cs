@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using ProyectoInmobiliariaMVCPrimera_Entrega.Models;
 
 namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 {
+    [Authorize]
     public class PropietariosController : Controller
     {
         
@@ -84,8 +86,10 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
             }
         }
 
-            // GET: Propietarios/Delete/5
-            public ActionResult Delete(int id)
+        // GET: Propietarios/Delete/5
+        [Authorize(Policy = "Administrador")]
+
+        public ActionResult Delete(int id)
             {
                var p = repositorioPropietario.ObtenerPorId(id);
 
@@ -95,6 +99,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
             // POST: Propietarios/Delete/5
             [HttpPost]
             [ValidateAntiForgeryToken]
+            [Authorize(Policy = "Administrador")]
+
         public ActionResult Delete(int id, Propietario entidad)
         {
             try
