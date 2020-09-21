@@ -11,7 +11,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
         Administrador = 2,
         Empleado = 3,
     }
-
+    //superadminid soy yo, administrar menos, emplado no hace nada//
     public class Usuario
     {
         [Key]
