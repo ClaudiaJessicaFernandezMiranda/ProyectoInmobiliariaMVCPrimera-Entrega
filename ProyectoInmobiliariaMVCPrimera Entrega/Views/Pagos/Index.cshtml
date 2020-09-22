@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ProyectoInmobiliariaMVCPrimera_Entrega.Models.Alquiler>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pagos</h1>
+
+
+
+<div class="container">
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm" asp-controller="Pagos" asp-action="Index" method="post">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-search h4 text-body"></i>
+                    </div>
+                    <!--end of col-->
+                    <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="DNI Inquilino" name="dni" maxlength="8" required pattern="[0-9]{8,8}">
+
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+</div>
+@if (Model != null && Model.Count() != 0)
+{
+
+    <section class="pricing py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Free Tier -->
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body">
+                                <div class="img-fluid">
+                                    <img src="https://1.bp.blogspot.com/-PjTpyHd_jQg/VpK3B0WdZmI/AAAAAAAAU-k/GUr35DAjzg4/s1600/Inmueble-propiedad.jpg" class="w-100">
+                                </div>
+                                <hr>
+                                <hr>Propiedad
+                                <ul class="fa-ul">
+
+
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Direccion:  @Html.DisplayFor(modelItem => item.inmueble.Direccion)</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Costo:  @Html.DisplayFor(modelItem => item.inmueble.Costo)</li>
+                                </ul>
+                                <hr>Inquilino
+                                <ul class="fa-ul">
+
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Nombre: @Html.DisplayFor(modelItem => item.inquilino.Nombre)</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Apllido:    @Html.DisplayFor(modelItem => item.inquilino.Apellido)</li>
+                                </ul>
+                                <hr>Alquiler
+                                <ul class="fa-ul">
+
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Descripcion:   @Html.DisplayFor(modelItem => item.Descripcion)</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Alta:  @Html.DisplayFor(modelItem => item.FechaAlta)</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Baja:  @Html.DisplayFor(modelItem => item.FechaBaja)</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Superficie: @Html.DisplayFor(modelItem => item.Monto)</li>
+
+                                </ul>
+                                @*<a href="" class="btn btn-block btn-primary text-uppercase" ></a>*@
+
+                                <hr>
+
+                                <form class="card card-sm" asp-controller="Pagos" asp-action="Create" method="get">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h4 text-body"></i>
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col">
+
+                                            <input class="form-control form-control-lg form-control-borderless" type="hidden" name="id" value="@item.AlquilerId">
+
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col-auto">
+                                            <button class="btn btn-lg btn-success" type="submit">Crear Pago</button>
+                                        </div>
+                                        <!--end of col-->
+                                    </div>
+                                </form>
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
