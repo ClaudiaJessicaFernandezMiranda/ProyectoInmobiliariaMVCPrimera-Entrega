@@ -38,6 +38,19 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
             }
         }
 
+        public ActionResult Listapago(string id)
+        {
+            try
+            {
+                var lista = repositorioPago.ObtenerPorAlquiler(id);
+                return View(lista);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: Pagos/Details/5
         public ActionResult Details(int id)
         {
@@ -48,6 +61,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.Alquiler = repositorioAlquiler.ObtenerPorId(id);
+            ViewBag.Inquilino = repositorioInquilino.ObtenerInquilinoPorIdAlquiler(id);
+            ViewBag.Pago = repositorioPago.ObtenerNumeroDePagoPorIdAlquiler(id);
             return View();
         }
 

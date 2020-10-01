@@ -182,18 +182,16 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 			IList<Pago> res = new List<Pago>();
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
-				string sql = $"SELECT PagoId, Numero, Fecha, Importe, p.AlquilerId, " +
-					"a.Descripcion,a.Monto" +
-					"FROM Pago p INNER JOIN Alquiler a ON p.AlquilerId = a.AlquilerId" +
-					" WHERE AlquilerId=@alquilerId";
+				string sql = $"SELECT PagoId, Numero, Fecha, Importe, p.AlquilerId, a.Descripcion,a.Monto FROM Pagos p, Alquileres a WHERE p.AlquilerId = a.AlquilerId and a.AlquilerId = @alquilerId";
 				using (SqlCommand command = new SqlCommand(sql, connection))
 				{
 					command.CommandType = CommandType.Text;
 					command.Parameters.Add("@alquilerId", SqlDbType.VarChar).Value = alquilerId;
 					connection.Open();
 					var reader = command.ExecuteReader();
-					if (reader.Read())
+					while (reader.Read())
 					{
+
 						Pago p = new Pago
 						{
 							PagoId = reader.GetInt32(0),
@@ -203,6 +201,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 							AlquilerId = reader.GetInt32(4),
 						};
 						res.Add(p);
+
 					}
 					connection.Close();
 				}
@@ -308,5 +307,30 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 			}
 			return res;
 		}
+		public Pago ObtenerNumeroDePagoPorIdAlquiler(int id)
+		{
+			Pago p = null;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				string sql = $"SELECT Numero FROM Pagos where AlquilerId = @id";
+				using (SqlCommand command = new SqlCommand(sql, connection))
+				{
+					command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+					command.CommandType = CommandType.Text;
+					connection.Open();
+					var reader = command.ExecuteReader();
+					if (reader.Read())
+					{
+						p = new Pago
+						{
+							Numero = reader.GetString(0),
+						};
+					}
+					connection.Close();
+				}
+			}
+			return p;
+		}
+
 	}
 }

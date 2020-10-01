@@ -41,10 +41,13 @@
             <div class="form-group">
                 <label class="control-label">Propiedad</label>
                 <select class="form-control" name="InmuebleId">
-                    @foreach (var iteminm in (IList<Inmueble>)ViewBag.Inmuebless)
+                  
+
+                    @foreach (var item in (IList<Inmueble>)ViewBag.Inmuebless)
                     {
-                        <option value="@iteminm.InmuebleId">Direccion: @(iteminm.Direccion), Costo: $@(iteminm.Costo)</option>
+                        @:<option @(item.InmuebleId == Model.InmuebleId ? "selected" : "") value="@item.InmuebleId">@(item.Direccion + " " + item.Costo)</option>
                     }
+
                 </select>
                 <span asp-validation-for="InmuebleId" class="text-danger"> </span>
             </div>
@@ -52,9 +55,11 @@
             <div class="form-group">
                 <label class="control-label">Inquilino</label>
                 <select class="form-control" name="InquilinoId">
-                    @foreach (var iteminq in (IList<Inquilino>)ViewBag.Inquilinoss)
+                   
+
+                    @foreach (var item in (IList<Inquilino>)ViewBag.Inquilinoss)
                     {
-                        <option value="@iteminq.InquilinoId">@(iteminq.Nombre) @(iteminq.Apellido)</option>
+                        @:<option @(item.InquilinoId == Model.InquilinoId ? "selected" : "") value="@item.InquilinoId">@(item.Nombre + " " + item.Apellido)</option>
                     }
                 </select>
                 <span asp-validation-for="InquilinoId" class="text-danger"> </span>

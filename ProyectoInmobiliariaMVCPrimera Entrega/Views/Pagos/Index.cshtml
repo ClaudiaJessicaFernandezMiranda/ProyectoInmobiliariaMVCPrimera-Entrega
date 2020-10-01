@@ -91,17 +91,31 @@
                                             <button class="btn btn-lg btn-success" type="submit">Crear Pago</button>
                                         </div>
                                         <!--end of col-->
+
+
                                     </div>
                                 </form>
 
+                                <form class="card card-sm" asp-controller="Pagos" asp-action="ListaPago" method="get">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h4 text-body"></i>
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col">
+
+                                            <input class="form-control form-control-lg form-control-borderless" type="hidden" name="id" value="@item.AlquilerId">
+
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col-auto">
+                                            <button class="btn btn-lg btn-success" type="submit">Ver Pagos</button>
+                                        </div>
+                                        <!--end of col-->
 
 
-
-
-
-
-
-
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

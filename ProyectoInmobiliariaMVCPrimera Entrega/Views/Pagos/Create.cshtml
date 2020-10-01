@@ -11,7 +11,18 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Numero" class="control-label"></label>
-                <input asp-for="Numero" class="form-control" />
+
+                @if (ViewBag.pago == null)
+                {
+                    <input asp-for="Numero" class="form-control" value="1" readonly />
+                }
+                else
+                {
+                    int num = int.Parse(@ViewBag.Pago.Numero) + 1;
+                    <input asp-for="Numero" class="form-control" value="@num" readonly />
+
+                }
+
                 <span asp-validation-for="Numero" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,10 +37,15 @@
             </div>
             <div class="form-group">
 
-                @*@{var iteminq = ViewBag.Alquilerr;}*@
-
+                <label class="control-label">Propiedad</label>
                 <input class="form-control" value="@ViewBag.Alquiler.inmueble.Direccion" readonly />
                 <input asp-for="AlquilerId" class="form-control" type="hidden" value="@ViewBag.Alquiler.AlquilerId" />
+            </div>
+
+            <div class="form-group">
+
+                <label class="control-label">Inquilino</label>
+                <input class="form-control" value="@ViewBag.Inquilino.Nombre" readonly />
             </div>
 
 

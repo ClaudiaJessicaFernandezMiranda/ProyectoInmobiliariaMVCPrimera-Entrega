@@ -148,8 +148,40 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 			return i;
 		}
 
-		
 
-		
+		public Inquilino ObtenerInquilinoPorIdAlquiler(int id)
+		{
+			Inquilino i = null;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				string sql = $"SELECT a.InquilinoId, Dni, Nombre, Apellido, Email, Telefono " +
+					$" FROM Inquilinos i, Alquileres a" +
+					$" WHERE i.InquilinoId=a.InquilinoId AND" +
+					$"       a.AlquilerId = @id";
+				using (SqlCommand command = new SqlCommand(sql, connection))
+				{
+					command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+					command.CommandType = CommandType.Text;
+					connection.Open();
+					var reader = command.ExecuteReader();
+					if (reader.Read())
+					{
+						i = new Inquilino
+						{
+							InquilinoId = reader.GetInt32(0),
+							Dni = reader.GetString(1),
+							Nombre = reader.GetString(2),
+							Apellido = reader.GetString(3),
+							Email = reader.GetString(4),
+							Telefono = reader.GetString(5),
+
+						};
+					}
+					connection.Close();
+				}
+			}
+			return i;
+		}
+
 	}
 }
