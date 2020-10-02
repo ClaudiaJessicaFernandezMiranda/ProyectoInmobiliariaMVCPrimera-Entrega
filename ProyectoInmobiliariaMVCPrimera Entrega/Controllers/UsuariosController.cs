@@ -196,8 +196,9 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
                     }
                     var claims = new List<Claim>
                     {
-                        //new Claim(ClaimTypes.Name,e.UsuarioId),
+                       //new Claim(ClaimTypes.Name,e.UsuarioId),
                         new Claim(ClaimTypes.Name, e.Email),
+                        new Claim("TipoDeUsuario", e.RolNombre),
                         new Claim("FullName", e.Nombre + " " + e.Apellido),
                         new Claim(ClaimTypes.Role, e.RolNombre),
                     };
