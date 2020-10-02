@@ -4,62 +4,72 @@
     ViewData["Title"] = "Listapago";
 }
 
-<h1>Listapago</h1>
+<div class="card bg-light border border-primary">
+    <div class="card-header border-bottom border-primary bg-light">
+        <a class="btn btn-primary text-white mr-2 disabled" asp-action="Create">Lista actual de pagos realizados</a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PagoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Numero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Importe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlquilerId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Buscar)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PagoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Importe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AlquilerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Buscar)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="card-body">
+        <table class="table table-hover table-bordered w-100" id="dtHorizontalVertical">
+            <thead class="table-danger">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PagoId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Importe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AlquilerId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Buscar)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PagoId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Importe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AlquilerId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buscar)
+                        </td>
+                        <td class="d-flex justify-content-center">
+                            <div class="btn-group" role="group">
+
+                                <a asp-action="Edit" class="btn btn-primary disabled"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" class=" btn btn-danger disabled"><i class="fas fa-minus-square"></i></a>
+
+                            </div>
+
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

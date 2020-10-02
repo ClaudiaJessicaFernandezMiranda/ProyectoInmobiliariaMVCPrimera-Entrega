@@ -3,124 +3,83 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Pagos</h1>
-
-
-
-<div class="container">
-    <br />
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8">
+    <div class="card bg-light border border-primary">
+        <div class="card-header border-bottom border-primary bg-light">
             <form class="card card-sm" asp-controller="Pagos" asp-action="Index" method="post">
-                <div class="card-body row no-gutters align-items-center">
-                    <div class="col-auto">
-                        <i class="fas fa-search h4 text-body"></i>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <a class="btn btn-md btn-primary" data-tip="tooltip" data-placement="top" title="Agregar Vehículo">
+                            <i class="fas fa-plus-circle fa-lg"></i>
+                           
+                        </a>
                     </div>
-                    <!--end of col-->
-                    <div class="col">
-                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="DNI Inquilino" name="dni" maxlength="8" required pattern="[0-9]{8,8}">
 
+                    <input class="form-control border border-primary" name="dni" type="search" placeholder="DNI Inquilino.." aria-label="Buscar">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-md btn-primary" type="submit" data-tip="tooltip" data-placement="top" title="Buscar Inquilino" href="">
+                            <i class="fas fa-search fa-lg"></i>
+                        </button>
                     </div>
-                    <!--end of col-->
-                    <div class="col-auto">
-                        <button class="btn btn-lg btn-success" type="submit">Buscar</button>
-                    </div>
-                    <!--end of col-->
                 </div>
             </form>
         </div>
-        <!--end of col-->
-    </div>
-</div>
-@if (Model != null && Model.Count() != 0)
-{
+        <div class="card-body">
 
-    <section class="pricing py-5">
-        <div class="container">
-            <div class="row">
-                <!-- Free Tier -->
-                @foreach (var item in Model)
-                {
-                    <div class="col-lg-4">
-                        <div class="card mb-5 mb-lg-0">
-                            <div class="card-body">
-                                <div class="img-fluid">
-                                    <img src="https://1.bp.blogspot.com/-PjTpyHd_jQg/VpK3B0WdZmI/AAAAAAAAU-k/GUr35DAjzg4/s1600/Inmueble-propiedad.jpg" class="w-100">
-                                </div>
-                                <hr>
-                                <hr>Propiedad
-                                <ul class="fa-ul">
+           
 
+            @if (Model != null && Model.Count() != 0)
+            {
 
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Direccion:  @Html.DisplayFor(modelItem => item.inmueble.Direccion)</li>
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Costo:  @Html.DisplayFor(modelItem => item.inmueble.Costo)</li>
-                                </ul>
-                                <hr>Inquilino
-                                <ul class="fa-ul">
+        <div class="row scrollspy-example">
+            <!-- Free Tier -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 contenedor">
+                    <div class="card border border-primary">
+                        <img class="border-bottom border-primary w-100" src="https://images7.alphacoders.com/436/thumb-1920-436350.jpg">
 
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Nombre: @Html.DisplayFor(modelItem => item.inquilino.Nombre)</li>
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Apllido:    @Html.DisplayFor(modelItem => item.inquilino.Apellido)</li>
-                                </ul>
-                                <hr>Alquiler
-                                <ul class="fa-ul">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.inmueble.Direccion)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                            <div id="MM@(item.AlquilerId)" class="collapse">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        Superficie: @Html.DisplayFor(modelItem => item.inmueble.Superficie)
+                                    </li>
+                                    <li class="list-group-item">
+                                        Monto: @Html.DisplayFor(modelItem => item.Monto)
+                                    </li>
+                                    <li class="list-group-item">
+                                        Costo:  @Html.DisplayFor(modelItem => item.inmueble.Costo)
+                                    </li>
+                                    <li class="list-group-item">
+                                        Inquilino: @Html.DisplayFor(modelItem => item.inquilino.Nombre) @Html.DisplayFor(modelItem => item.inquilino.Apellido)
+                                    </li>
 
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Descripcion:   @Html.DisplayFor(modelItem => item.Descripcion)</li>
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Alta:  @Html.DisplayFor(modelItem => item.FechaAlta)</li>
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha Baja:  @Html.DisplayFor(modelItem => item.FechaBaja)</li>
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Superficie: @Html.DisplayFor(modelItem => item.Monto)</li>
 
                                 </ul>
-                                @*<a href="" class="btn btn-block btn-primary text-uppercase" ></a>*@
-
-                                <hr>
-
-                                <form class="card card-sm" asp-controller="Pagos" asp-action="Create" method="get">
-                                    <div class="card-body row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i class="fas fa-search h4 text-body"></i>
-                                        </div>
-                                        <!--end of col-->
-                                        <div class="col">
-
-                                            <input class="form-control form-control-lg form-control-borderless" type="hidden" name="id" value="@item.AlquilerId">
-
-                                        </div>
-                                        <!--end of col-->
-                                        <div class="col-auto">
-                                            <button class="btn btn-lg btn-success" type="submit">Crear Pago</button>
-                                        </div>
-                                        <!--end of col-->
-
-
-                                    </div>
-                                </form>
-
-                                <form class="card card-sm" asp-controller="Pagos" asp-action="ListaPago" method="get">
-                                    <div class="card-body row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i class="fas fa-search h4 text-body"></i>
-                                        </div>
-                                        <!--end of col-->
-                                        <div class="col">
-
-                                            <input class="form-control form-control-lg form-control-borderless" type="hidden" name="id" value="@item.AlquilerId">
-
-                                        </div>
-                                        <!--end of col-->
-                                        <div class="col-auto">
-                                            <button class="btn btn-lg btn-success" type="submit">Ver Pagos</button>
-                                        </div>
-                                        <!--end of col-->
-
-
-                                    </div>
-                                </form>
                             </div>
+
+                            <div class="btn-group w-100">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#MM@(item.AlquilerId)">Ver más</button>
+
+                                <a asp-controller="Pagos" asp-action="Create" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary" data-tip="tooltip" data-placement="top" title="Realizar pago"><i class="fas fa-money-bill-alt fa-lg"></i></a>
+                                <a asp-controller="Pagos" asp-action="ListaPago" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary" data-tip="tooltip" data-placement="top" title="Lista de pagos"><i class="fas fa-list-ol fa-lg"></i></a>
+
+                            </div>
+                                    
+                        </div>
+                        <div class="bg-primary text-center pt-3">
+                            <ul class="list-unstyled list-inline font-small">
+                                <li class="list-inline-item pr-2 white-text"><i class="far fa-calendar-check pr-2"></i>@Html.DisplayFor(modelItem => item.FechaAlta)</li>
+                                <li class="list-inline-item pr-2 white-text"><i class="far fa-calendar-times pr-2"></i>@Html.DisplayFor(modelItem => item.FechaBaja)</li>                         
+                            </ul>
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
-    </section>
-}
+            }
+        </div>
+    </div>

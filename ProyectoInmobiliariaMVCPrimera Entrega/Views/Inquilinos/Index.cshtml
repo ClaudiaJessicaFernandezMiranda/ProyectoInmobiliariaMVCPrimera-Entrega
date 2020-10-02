@@ -2,8 +2,8 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-    <div class="card bg-light border-primary">
-        <div class="card-header bg-light">
+    <div class="card bg-light border border-primary">
+        <div class="card-header border-bottom border-primary bg-light">
             <a class="btn btn-primary text-white mr-2" asp-action="Create">Crear Inquilino</a>
         </div>
 
@@ -13,8 +13,8 @@
                 <thead class="table-danger">
                     <tr>
                         @*<th>
-                @Html.DisplayNameFor(model => model.InquilinoId)
-            </th>*@
+                            @Html.DisplayNameFor(model => model.InquilinoId)
+                        </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.Dni)
                         </th>
@@ -38,39 +38,39 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        @*<td>
-            @Html.DisplayFor(modelItem => item.InquilinoId)
-        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Dni)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Apellido)
-                        </td>
+                        <tr>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.InquilinoId)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dni)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Apellido)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefono)
-                        </td>
-                        <td class="d-flex justify-content-center">
-                            <div class="btn-group" role="group">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </td>
+                            <td class="d-flex justify-content-center">
+                                <div class="btn-group" role="group">
 
-                                <a asp-action="Edit" asp-route-id="@item.InquilinoId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                <a asp-action="Delete" asp-route-id="@item.InquilinoId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
-                                @*@Html.ActionLink("Details", "Details", new { id=item.InquilinoId}) |*@
-                            </div>
+                                    <a asp-action="Edit" asp-route-id="@item.InquilinoId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.InquilinoId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
+                                    @*@Html.ActionLink("Details", "Details", new { id=item.InquilinoId}) |*@
+                                </div>
 
 
-                        </td>
-                       
-                    </tr>
+                            </td>
+
+                        </tr>
                     }
                 </tbody>
             </table>

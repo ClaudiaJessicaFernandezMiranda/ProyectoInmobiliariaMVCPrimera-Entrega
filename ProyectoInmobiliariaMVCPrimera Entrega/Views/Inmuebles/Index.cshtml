@@ -4,8 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="card bg-light border-primary">
-        <div class="card-header bg-light">
+    <div class="card bg-light border border-primary">
+        <div class="card-header border-bottom border-primary bg-light">
             <a class="btn btn-primary text-white mr-2" asp-action="Create">Crear Inmueble</a>
         </div>
         <div class="card-body">
@@ -78,12 +78,12 @@
                             </td>
                             <td class="d-flex justify-content-center">
                                 <div class="btn-group" role="group">
-                                   
+
                                     <a asp-action="Edit" asp-route-id="@item.InmuebleId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                     <a asp-action="Delete" asp-route-id="@item.InmuebleId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
                                     @*@Html.ActionLink("Details", "Details", new { id=item.InmuebleId}) |*@
                                 </div>
-                                
+
 
                             </td>
                         </tr>

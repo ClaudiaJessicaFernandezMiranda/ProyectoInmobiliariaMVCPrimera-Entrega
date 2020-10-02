@@ -6,8 +6,8 @@
 
      
  
-    <div class="card bg-light border-primary">
-        <div class="card-header bg-light">
+    <div class="card bg-light border border-primary">
+        <div class="card-header border-bottom border-primary bg-light">
             <a class="btn btn-primary text-white mr-2" asp-action="Create">Crear Propietario</a>
         </div>
         <div class="card-body">
@@ -16,8 +16,8 @@
                 <thead class="table-danger">
                     <tr>
                         @*<th>
-                @Html.DisplayNameFor(model => model.PropietarioId)
-            </th>*@
+                            @Html.DisplayNameFor(model => model.PropietarioId)
+                        </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.Dni)
                         </th>
@@ -35,48 +35,48 @@
                         </th>
 
                         @*<th>
-                @Html.DisplayNameFor(model => model.Clave)
-            </th>*@
+                            @Html.DisplayNameFor(model => model.Clave)
+                        </th>*@
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        @*<td>
-            @Html.DisplayFor(modelItem => item.PropietarioId)
-        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Dni)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Apellido)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefono)
-                        </td>
+                        <tr>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.PropietarioId)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dni)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </td>
 
-                        @*<td>
-            @Html.DisplayFor(modelItem => item.Clave)
-        </td>*@
-                        <td class="d-flex justify-content-center">
-                            <div class="btn-group" role="group">
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Clave)
+                            </td>*@
+                            <td class="d-flex justify-content-center">
+                                <div class="btn-group" role="group">
 
-                                <a asp-action="Edit" asp-route-id="@item.PropietarioId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                <a asp-action="Delete" asp-route-id="@item.PropietarioId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
-                                @*@Html.ActionLink("Details", "Details", new { id=item.InmuebleId}) |*@
-                            </div>
+                                    <a asp-action="Edit" asp-route-id="@item.PropietarioId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.PropietarioId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
+                                    @*@Html.ActionLink("Details", "Details", new { id=item.InmuebleId}) |*@
+                                </div>
 
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>

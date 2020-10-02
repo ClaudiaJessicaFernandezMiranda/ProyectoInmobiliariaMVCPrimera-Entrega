@@ -4,68 +4,72 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Usuario</h1>
+    <div class="card bg-light border border-primary">
+        <div class="card-header border-bottom border-primary bg-light">
+            <a class="btn btn-primary text-white mr-2" asp-action="Create">Crear Usuario</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-primary">Lista actual de usuarios</h5>
+            <table class="table table-hover table-bordered w-100" id="dtHorizontalVertical">
+                <thead class="table-danger">
+                    <tr>
 
-<p>
-    <a asp-action="Create">Crear usuario</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.UsuarioId)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Clave)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Rol)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-    //if(item.RolNombre =="Administrador"){
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.UsuarioId)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Apellido)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.Clave)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Rol)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        //if(item.RolNombre =="Administrador"){
 
-    //}
-        <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.UsuarioId)
-        </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Clave)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.RolNombre)
-            </td>
-            <td>
-                @*@Html.ActionLink("Editar", "Edit", new { id=item.UsuarioId}) |*@
-
-                <a asp-action="Edit" asp-route-id="@item.UsuarioId" title="Editar">
-                <span class="lnr lnr-pencil">Editar</span></a>&nbsp;
-
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.UsuarioId })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        //}
+                        <tr>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.UsuarioId)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Clave)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RolNombre)
+                            </td>
+                            <td class="d-flex justify-content-center">
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Edit" asp-route-id="@item.UsuarioId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.UsuarioId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
+                                    @*@Html.ActionLink("Details", "Details", new { id=item.InmuebleId}) |*@
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

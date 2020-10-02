@@ -3,15 +3,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="card bg-light border-primary">
-    <div class="card-header bg-light">
-        <div class="input-group mb-3">
+<div class="card bg-light border border-primary">
+        <div class="card-header border-bottom border-primary bg-light">
+        <div class="input-group ">
             <div class="input-group-prepend">
                 <a class="btn btn-primary" asp-action="Create">Crear alquiler</a>
             </div>
-            <input type="text" class="form-control" id="inputBusquedaAlquiler" placeholder="Buscar alquiler..">
+            <input type="text" class="form-control border border-primary" id="inputBusquedaAlquiler" placeholder="Buscar alquiler..">
         </div>
     </div>
+
     <div class="card-body">
     
         <h5 class="card-title text-primary">Lista actual de alquileres</h5>
@@ -21,7 +22,7 @@
             @foreach (var item in Model)
             {
                 <div class="col-md-3 contenedor">
-                    <div class="card border-primary">
+                    <div class="card border border-primary">
                         <img class="border-bottom border-primary w-100" src="https://images7.alphacoders.com/436/thumb-1920-436350.jpg">
                         @*<div class="card-header bg-transparent border-primary"> </div>*@
                         <div class="card-body">
@@ -37,12 +38,8 @@
                                     </li>
 
                                 </ul>
-
-
-
-
                             </div>
-                            <div class="btn-group mt-3">                           
+                            <div class="btn-group w-100">
                                 <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#MM@(item.AlquilerId)">Ver más</button>
                                 <a asp-action="Edit" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>
                                 <a asp-action="Delete" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary"><i class="fas fa-minus-square"></i></a>
@@ -52,8 +49,13 @@
                             </div>
 
                         </div>
-
-                        <div class="card-footer bg-transparent border-primary">@Html.DisplayFor(modelItem => item.FechaAlta) Hasta @Html.DisplayFor(modelItem => item.FechaBaja)</div>
+                        <div class="bg-primary text-center pt-3">
+                            <ul class="list-unstyled list-inline font-small">
+                                <li class="list-inline-item pr-2 white-text"><i class="far fa-calendar-check pr-2"></i>@Html.DisplayFor(modelItem => item.FechaAlta)</li>
+                                <li class="list-inline-item pr-2 white-text"><i class="far fa-calendar-times pr-2"></i>@Html.DisplayFor(modelItem => item.FechaBaja)</li>
+                            </ul>
+                        </div>
+                    
                     </div>
 
                 </div>
