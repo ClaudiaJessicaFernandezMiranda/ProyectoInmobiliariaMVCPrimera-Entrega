@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProyectoInmobiliariaMVCPrimera_Entrega</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    </environment>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css" />
@@ -22,33 +17,30 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded-bottom border border-dark">
             <div class="container">
                 <a class="navbar-brand mr-1 mb-1 mt-0" asp-area="" asp-controller="Home" asp-action="Index">Inmobiliaria</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse justify-content-center">
+                <div class="navbar-collapse collapse justify-content-center" id="menuNavegacion">
 
                     <ul class="navbar-nav ml-auto">
                         @if (!User.Identity.IsAuthenticated)
                         {
-                            //Entra al login
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
-                            </li>
+
 
                         }
                         else
                         {
-
+                            <li class="nav-item">
+                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            </li>
                             @if (User.IsInRole("Administrador") || User.IsInRole("SuperAdministrador"))
                             {
 
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                                    <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                                 </li>
                             }
-                            <li class="nav-item">
-                                <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Propietarios" asp-action="Index">Propietario</a>
                             </li>
@@ -64,18 +56,62 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Pagos" asp-action="Index">Pago</a>
                             </li>
+                            //ACA AGREGAR LISTAS
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-light font-weight-bold" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Extras
+                                    Listas
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
-                                    <a class="dropdown-item px-2">@User.Identity.Name</a>
-                                    <a class="dropdown-item px-2" asp-controller="Usuarios" asp-action="Logout">Salir</a>
-                                    <a class="dropdown-item px-2">EJEMPLO3</a>
+                                    <a class="dropdown-item px-2">Lista 1</a>
+                                    <a class="dropdown-item px-2">Lista 2</a>
+                                    <a class="dropdown-item px-2">Lista 3</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item px-2" href="#more">Todo</a>
+                                    <a class="dropdown-item px-2" href="#more">Lista 4</a>
                                 </div>
                             </li>
+                            //ACA AGREGAR LISTAS
+                            <li class="nav-item dropdown ml-3">
+                                <a class="nav-link text-white font-weight-bold dropdown-toggle" id="navbarDropdownUsuario" data-toggle="dropdown" href="#">
+                                    @User.Identity.Name
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownUsuario">
+
+                                    <form class="font-weight-bold ">
+                                        <div class="form-group">
+                                            <ul class="list-group mb-2">
+                                                <li class="list-group-item active text-center bg-primary">@(User.FindFirst("FullName").Value)</li>
+                                                <li class="list-group-item text-center text-primary">@(User.FindFirst("TipoDeUsuario").Value)</li>
+                                            </ul>
+                                            @*<div class="form-group">
+                                                    <fieldset disabled>
+                                                        <div class="input-group mt-2">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text"><i class="fas fa-phone"></i></div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="inputTelefono" placeholder="">
+                                                        </div>
+                                                        <div class="input-group mt-2">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text"><i class="fas fa-phone"></i></div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="inputTelefono" placeholder="">
+
+
+
+                                                        </div>
+
+                                                    </fieldset>
+                                                </div>*@
+                                            <hr>
+                                            <a class="dropdown-item text-dark" asp-controller="Usuarios" asp-action="Logout">Salir</a>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </li>
+
                         }
                     </ul>
                 </div>
@@ -100,10 +136,13 @@
         </div>
     </footer>
 
+    <!-- JS, Popper.js, and jQuery -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
     @RenderSection("Scripts", required: false)

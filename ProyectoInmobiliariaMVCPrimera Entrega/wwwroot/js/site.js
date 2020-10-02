@@ -42,3 +42,8 @@ $(document).ready(function () {
     });
     $('.dataTables_length').addClass('bs-select');
 });
+
+// Tooltips Initialization
+$(function () {
+    $('[data-tip="tooltip"]').tooltip()
+})

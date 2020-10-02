@@ -4,6 +4,7 @@ for details on configuring this project to bundle and minify static web assets. 
     font-family: "Roboto", sans-serif;
     font-weight: 400;
 }
+
 @font-face {
     font-family: Roboto;
     font-weight: 200;
@@ -42,10 +43,11 @@ for details on configuring this project to bundle and minify static web assets. 
 html.sr .load-hidden {
     visibility: hidden;
 }
+
 .scrollspy-example {
     position: relative;
-    overflow-y: scroll; 
-    height:38rem;
+    overflow-y: scroll;
+    height: 38rem;
     scrollbar-width: thin;
     scrollbar-color: #155d9d #F5F5F5;
 }
@@ -53,6 +55,13 @@ html.sr .load-hidden {
 .bg-primary {
     background-color: #f6648C !important;
     background: linear-gradient(to bottom right, #f6648c 0%, #f9999c 100%);
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #f6648C;
+    border-color: #f6648C;
 }
 
 .page-item.active .page-link {
@@ -114,8 +123,8 @@ a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
-   
 }
+
 .contenedor1 {
     background-image: url('../img/Inicio.jpg');
     background-repeat: no-repeat;
@@ -126,35 +135,38 @@ a.navbar-brand {
 .mt-6 {
     margin-top: 4rem;
 }
+
 .mt-7 {
-    margin-top:5rem;
+    margin-top: 5rem;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 .bd-placeholder-img {
@@ -183,3 +195,85 @@ html,
 body {
     background-color: #f8f9fa;
 }
+
+/* CARD
+-------------------------------------------------- */
+.indigo-text {
+    color: #3f51b5 !important
+}
+
+.card .card-body .card-text {
+    font-size: .9rem;
+    font-weight: 400;
+    color: #747373
+}
+
+.card.card-cascade.wider .card-body.card-body-cascade {
+    z-index: 1;
+    margin-right: 5%;
+    margin-left: 5%;
+    background: #fff;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.18),0 2px 11px 0 rgba(0,0,0,.13)
+}
+
+.card.card-cascade.wider.reverse .card-body.card-body-cascade {
+    z-index: 3;
+    margin-top: -1rem;
+    border-radius: .25rem
+}
+
+.card.card-cascade.wider {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.card {
+    font-weight: 400;
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+    .card.card-cascade .view.view-cascade, .card.card-image [class*="rgba-"] {
+        border-radius: .25rem;
+    }
+
+    .btn-comm.focus, .btn-comm:focus, .btn-comm:not([disabled]):not(.disabled).active, .btn-comm:not([disabled]):not(.disabled).active:focus, .btn-comm:not([disabled]):not(.disabled):active, .btn-comm:not([disabled]):not(.disabled):active:focus, .btn-discord.focus, .btn-discord:focus, .btn-discord:not([disabled]):not(.disabled).active, .btn-discord:not([disabled]):not(.disabled).active:focus, .btn-discord:not([disabled]):not(.disabled):active, .btn-discord:not([disabled]):not(.disabled):active:focus, .btn-dribbble.focus, .btn-dribbble:focus, .btn-dribbble:not([disabled]):not(.disabled).active, .btn-dribbble:not([disabled]):not(.disabled).active:focus, .btn-dribbble:not([disabled]):not(.disabled):active, .btn-dribbble:not([disabled]):not(.disabled):active:focus, .btn-email.focus, .btn-email:focus, .btn-email:not([disabled]):not(.disabled).active, .btn-email:not([disabled]):not(.disabled).active:focus, .btn-email:not([disabled]):not(.disabled):active, .btn-email:not([disabled]):not(.disabled):active:focus, .btn-fb.focus, .btn-fb:focus, .btn-fb:not([disabled]):not(.disabled).active, .btn-fb:not([disabled]):not(.disabled).active:focus, .btn-fb:not([disabled]):not(.disabled):active, .btn-fb:not([disabled]):not(.disabled):active:focus, .btn-git.focus, .btn-git:focus, .btn-git:not([disabled]):not(.disabled).active, .btn-git:not([disabled]):not(.disabled).active:focus, .btn-git:not([disabled]):not(.disabled):active, .btn-git:not([disabled]):not(.disabled):active:focus, .btn-gplus.focus, .btn-gplus:focus, .btn-gplus:not([disabled]):not(.disabled).active, .btn-gplus:not([disabled]):not(.disabled).active:focus, .btn-gplus:not([disabled]):not(.disabled):active, .btn-gplus:not([disabled]):not(.disabled):active:focus, .btn-ins.focus, .btn-ins:focus, .btn-ins:not([disabled]):not(.disabled).active, .btn-ins:not([disabled]):not(.disabled).active:focus, .btn-ins:not([disabled]):not(.disabled):active, .btn-ins:not([disabled]):not(.disabled):active:focus, .btn-li.focus, .btn-li:focus, .btn-li:not([disabled]):not(.disabled).active, .btn-li:not([disabled]):not(.disabled).active:focus, .btn-li:not([disabled]):not(.disabled):active, .btn-li:not([disabled]):not(.disabled):active:focus, .btn-pin.focus, .btn-pin:focus, .btn-pin:not([disabled]):not(.disabled).active, .btn-pin:not([disabled]):not(.disabled).active:focus, .btn-pin:not([disabled]):not(.disabled):active, .btn-pin:not([disabled]):not(.disabled):active:focus, .btn-reddit.focus, .btn-reddit:focus, .btn-reddit:not([disabled]):not(.disabled).active, .btn-reddit:not([disabled]):not(.disabled).active:focus, .btn-reddit:not([disabled]):not(.disabled):active, .btn-reddit:not([disabled]):not(.disabled):active:focus, .btn-slack.focus, .btn-slack:focus, .btn-slack:not([disabled]):not(.disabled).active, .btn-slack:not([disabled]):not(.disabled).active:focus, .btn-slack:not([disabled]):not(.disabled):active, .btn-slack:not([disabled]):not(.disabled):active:focus, .btn-so.focus, .btn-so:focus, .btn-so:not([disabled]):not(.disabled).active, .btn-so:not([disabled]):not(.disabled).active:focus, .btn-so:not([disabled]):not(.disabled):active, .btn-so:not([disabled]):not(.disabled):active:focus, .btn-tw.focus, .btn-tw:focus, .btn-tw:not([disabled]):not(.disabled).active, .btn-tw:not([disabled]):not(.disabled).active:focus, .btn-tw:not([disabled]):not(.disabled):active, .btn-tw:not([disabled]):not(.disabled):active:focus, .btn-twitch.focus, .btn-twitch:focus, .btn-twitch:not([disabled]):not(.disabled).active, .btn-twitch:not([disabled]):not(.disabled).active:focus, .btn-twitch:not([disabled]):not(.disabled):active, .btn-twitch:not([disabled]):not(.disabled):active:focus, .btn-vk.focus, .btn-vk:focus, .btn-vk:not([disabled]):not(.disabled).active, .btn-vk:not([disabled]):not(.disabled).active:focus, .btn-vk:not([disabled]):not(.disabled):active, .btn-vk:not([disabled]):not(.disabled):active:focus, .btn-whatsapp.focus, .btn-whatsapp:focus, .btn-whatsapp:not([disabled]):not(.disabled).active, .btn-whatsapp:not([disabled]):not(.disabled).active:focus, .btn-whatsapp:not([disabled]):not(.disabled):active, .btn-whatsapp:not([disabled]):not(.disabled):active:focus, .btn-yt.focus, .btn-yt:focus, .btn-yt:not([disabled]):not(.disabled).active, .btn-yt:not([disabled]):not(.disabled).active:focus, .btn-yt:not([disabled]):not(.disabled):active, .btn-yt:not([disabled]):not(.disabled):active:focus, .card.card-cascade .view.view-cascade, .card.card-cascade.wider.reverse .card-body.card-body-cascade, .dropdown .dropdown-menu.dropdown-primary .dropdown-item.active, .dropdown .dropdown-menu.dropdown-primary .dropdown-item:active, .dropdown .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropleft .dropdown-menu.dropdown-primary .dropdown-item.active, .dropleft .dropdown-menu.dropdown-primary .dropdown-item:active, .dropleft .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropright .dropdown-menu.dropdown-primary .dropdown-item.active, .dropright .dropdown-menu.dropdown-primary .dropdown-item:active, .dropright .dropdown-menu.dropdown-primary .dropdown-item:hover, .dropup .dropdown-menu.dropdown-primary .dropdown-item.active, .dropup .dropdown-menu.dropdown-primary .dropdown-item:active, .dropup .dropdown-menu.dropdown-primary .dropdown-item:hover, .form-header, .modal-dialog .modal-content, .modal-dialog.cascading-modal .modal-header, .show > .btn-comm.dropdown-toggle, .show > .btn-comm.dropdown-toggle:focus, .show > .btn-discord.dropdown-toggle, .show > .btn-discord.dropdown-toggle:focus, .show > .btn-dribbble.dropdown-toggle, .show > .btn-dribbble.dropdown-toggle:focus, .show > .btn-email.dropdown-toggle, .show > .btn-email.dropdown-toggle:focus, .show > .btn-fb.dropdown-toggle, .show > .btn-fb.dropdown-toggle:focus, .show > .btn-git.dropdown-toggle, .show > .btn-git.dropdown-toggle:focus, .show > .btn-gplus.dropdown-toggle, .show > .btn-gplus.dropdown-toggle:focus, .show > .btn-ins.dropdown-toggle, .show > .btn-ins.dropdown-toggle:focus, .show > .btn-li.dropdown-toggle, .show > .btn-li.dropdown-toggle:focus, .show > .btn-pin.dropdown-toggle, .show > .btn-pin.dropdown-toggle:focus, .show > .btn-reddit.dropdown-toggle, .show > .btn-reddit.dropdown-toggle:focus, .show > .btn-slack.dropdown-toggle, .show > .btn-slack.dropdown-toggle:focus, .show > .btn-so.dropdown-toggle, .show > .btn-so.dropdown-toggle:focus, .show > .btn-tw.dropdown-toggle, .show > .btn-tw.dropdown-toggle:focus, .show > .btn-twitch.dropdown-toggle, .show > .btn-twitch.dropdown-toggle:focus, .show > .btn-vk.dropdown-toggle, .show > .btn-vk.dropdown-toggle:focus, .show > .btn-whatsapp.dropdown-toggle, .show > .btn-whatsapp.dropdown-toggle:focus, .show > .btn-yt.dropdown-toggle, .show > .btn-yt.dropdown-toggle:focus {
+        box-shadow: 0 6px 12px 0 rgba(0,0,0,.19),0 5px 16px 0 rgba(0,0,0,.16);
+    }
+
+/*-------------------------------------------------- Iconos Sociales -------------------------------------------------- */
+.fb-ic {
+    color: #3b5998 !important
+}
+
+    .fb-ic:focus,
+    .fb-ic:hover {
+        color: #3b5998
+    }
+
+.tw-ic {
+    color: #55acee !important
+}
+
+    .tw-ic:focus,
+    .tw-ic:hover {
+        color: #55acee
+    }
+
+.li-ic {
+    color: #0082ca !important
+}
+
+    .li-ic:focus,
+    .li-ic:hover {
+        color: #f9999c
+    }
+
+/*------------------------------------------------------ Carousel ------------------------------------------------------ */
+.carousel, .carousel img {
+    width: auto;
+}
+
+    .carousel img {
+        height: 540px !important;
+    }
