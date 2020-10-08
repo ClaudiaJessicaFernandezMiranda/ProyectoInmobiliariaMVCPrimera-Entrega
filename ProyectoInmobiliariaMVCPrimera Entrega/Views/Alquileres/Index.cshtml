@@ -4,17 +4,48 @@
     ViewData["Title"] = "Index";
 }
 <div class="card bg-light border border-primary">
-        <div class="card-header border-bottom border-primary bg-light">
-        <div class="input-group ">
-            <div class="input-group-prepend">
-                <a class="btn btn-primary" asp-action="Create">Crear alquiler</a>
+    <div class="card-header border-bottom border-primary bg-light">
+        <form asp-action="Index" method="post">
+            <div class="input-group">
+
+                <div class="input-group-prepend">
+                    <div class="input-group-prepend">
+                        <a class="btn btn-primary" asp-action="Create">Crear Contrato</a>
+                    </div>
+
+                </div>
+                <input type="text" class="form-control border border-primary rounded-right" id="inputBusquedaAlquiler" placeholder="Buscar Inmuebles en Particular..">
+
+                <div class="input-group-prepend">
+
+                    <span class="input-group-text ml-5 rounded-left">De</span>
+
+                </div>
+
+
+
+                <input type="date" name="inicio" class="form-control">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Hasta</span>
+                </div>
+                <input type="date" name="fin" class="form-control">
+                <div class="input-group-prepend">
+
+                    <button class="btn btn-primary rounded-right" type="submit" data-tip="tooltip" data-placement="top" title="Listar Inmuebles" href="">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+
             </div>
-            <input type="text" class="form-control border border-primary" id="inputBusquedaAlquiler" placeholder="Buscar alquiler..">
-        </div>
+</form>
+
     </div>
 
+
     <div class="card-body">
-    
+
         <h5 class="card-title text-primary">Lista actual de alquileres</h5>
 
         <div class="row scrollspy-example" id="listAlquileres">
@@ -55,7 +86,7 @@
                                 <li class="list-inline-item pr-2 white-text"><i class="far fa-calendar-times pr-2"></i>@Html.DisplayFor(modelItem => item.FechaBaja)</li>
                             </ul>
                         </div>
-                    
+
                     </div>
 
                 </div>
@@ -65,4 +96,3 @@
 
     </div>
 </div>
-

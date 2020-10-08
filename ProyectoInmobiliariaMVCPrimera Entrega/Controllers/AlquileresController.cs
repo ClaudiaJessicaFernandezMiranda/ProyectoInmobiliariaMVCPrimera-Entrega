@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using ProyectoInmobiliariaMVCPrimera_Entrega.Models;
+using System;
 
 namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
 {
@@ -21,9 +22,14 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
             repositorioInmueble = new RepositorioInmueble(configuration);
         }
         // GET: Alquileres
-        public ActionResult Index()
+        public ActionResult Index(DateTime? inicio, DateTime? fin)
         {
+
             var lista = repositorioAlquiler.ObtenerTodos();
+            if (inicio != null && fin != null)
+            {
+                lista = repositorioAlquiler.ObtenerPagosPorFecha(inicio, fin);
+            }
             return View(lista);
         }
 
@@ -36,7 +42,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         // GET: Alquileres/Create
         public ActionResult Create()
         {
-            ViewBag.Inmuebless = repositorioInmueble.ObtenerTodos();
+            ViewBag.Inmuebless = repositorioInmueble.ObtenerTodosLosDisponibles();
             ViewBag.Inquilinoss = repositorioInquilino.ObtenerTodos();
 
             return View();
@@ -50,6 +56,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
             try
             {
                 repositorioAlquiler.Alta(alquiler);
+                repositorioInmueble.NoPublicado(alquiler.InmuebleId);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -89,6 +96,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         public ActionResult Delete(int id)
         {
             var p = repositorioAlquiler.ObtenerPorId(id);
+            repositorioInmueble.Publicado(p.InmuebleId);
+
             return View(p);
         }
 

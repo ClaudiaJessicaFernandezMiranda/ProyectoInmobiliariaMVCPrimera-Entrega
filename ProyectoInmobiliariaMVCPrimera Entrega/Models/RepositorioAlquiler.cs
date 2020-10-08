@@ -136,6 +136,8 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 			}
 			return res;
 		}
+
+		
 		public Alquiler ObtenerPorId(int id)
 		{
 			Alquiler entidad = null;
@@ -225,6 +227,58 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 			return res;
 		}
 
-		
+		public IList<Alquiler> ObtenerPagosPorFecha(DateTime? Inicio, DateTime? Fin)
+		{
+			IList<Alquiler> res = new List<Alquiler>();
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				string sql = $" SELECT AlquilerId, Descripcion, FechaAlta, FechaBaja, Monto, a.InmuebleId, a.InquilinoId," +
+					$" iq.Nombre, iq.Apellido," +
+					$" i.Direccion, i.Costo" +
+					$" FROM Alquileres a join Inmuebles i ON a.InmuebleId = i.InmuebleId " +
+					$"                   join Inquilinos iq ON a.InquilinoId = iq.inquilinoId" +
+					" WHERE i.EstaPublicado = 0 and" +
+					" FechaAlta BETWEEN @inicio AND @fin " +
+					" ORDER BY Direccion ";
+				
+
+				using (var command = new SqlCommand(sql, connection))
+				{
+					command.Parameters.Add("@inicio", SqlDbType.Date).Value = Inicio;
+					command.Parameters.Add("@fin", SqlDbType.Date).Value = Fin;
+					command.CommandType = CommandType.Text;
+					connection.Open();
+					var reader = command.ExecuteReader();
+
+
+					while (reader.Read())
+					{
+						Alquiler a = new Alquiler
+						{
+							AlquilerId = reader.GetInt32(0),
+							Descripcion = reader.GetString(1),
+							FechaAlta = reader.GetDateTime(2),
+							FechaBaja = reader.GetDateTime(3),
+							Monto = reader.GetString(4),
+							InmuebleId = reader.GetInt32(5),
+							InquilinoId = reader.GetInt32(6),
+							inquilino = new Inquilino
+							{
+								Nombre = reader.GetString(7),
+								Apellido = reader.GetString(8),
+							},
+							inmueble = new Inmueble
+							{
+								Direccion = reader.GetString(9),
+								Costo = reader.GetDecimal(10),
+							},
+						};
+						res.Add(a);
+					}
+					connection.Close();
+				}
+			}
+			return res;
+		}
 	}
 }

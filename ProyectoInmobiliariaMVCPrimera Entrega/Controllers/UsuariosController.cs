@@ -68,7 +68,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
                         iterationCount: 1000,
                         numBytesRequested: 256 / 8));
                 u.Clave = hashed;
-                u.Rol = User.IsInRole("Administrador") ? u.Rol : (int)enRoles.Empleado;
+                u.Rol = User.IsInRole("SuperAdministrador") ? u.Rol : (int)enRoles.Empleado;
                 var nbreRnd = Guid.NewGuid();//posible nombre aleatorio
                 int res = repositorioUsuario.Alta(u);
                 //if (u.AvatarFile != null && u.UsuarioId > 0)

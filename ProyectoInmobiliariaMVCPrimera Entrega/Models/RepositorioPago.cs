@@ -312,7 +312,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
 			Pago p = null;
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
-				string sql = $"SELECT Numero FROM Pagos where AlquilerId = @id";
+				string sql = $"SELECT Numero FROM Pagos where AlquilerId = @id order by Numero desc";
 				using (SqlCommand command = new SqlCommand(sql, connection))
 				{
 					command.Parameters.Add("@id", SqlDbType.Int).Value = id;

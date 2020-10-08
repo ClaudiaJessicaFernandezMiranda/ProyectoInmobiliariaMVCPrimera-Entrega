@@ -42,6 +42,9 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         {
             try
             {
+                ViewBag.Alquiler = repositorioAlquiler.ObtenerPorId(int.Parse(id));
+                ViewBag.Inquilino = repositorioInquilino.ObtenerInquilinoPorIdAlquiler(int.Parse(id));
+                ViewBag.Pago = repositorioPago.ObtenerNumeroDePagoPorIdAlquiler(int.Parse(id));
                 var lista = repositorioPago.ObtenerPorAlquiler(id);
                 return View(lista);
             }
@@ -69,15 +72,23 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         // POST: Pagos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Pago p)
+        public ActionResult Create(string Numero, DateTime Fecha, string Importe, int id)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    Pago p = new Pago();
+                    p.Numero = Numero;
+                    p.Fecha = Fecha;
+                    p.Importe = Importe;
+                    p.AlquilerId = id;
 
                     int res = repositorioPago.Alta(p);
-                    return RedirectToAction(nameof(Index));
+                    string idAlquiler = id.ToString();
+                    //return RedirectToAction(nameof(Listapago));
+                     return RedirectToAction("Listapago", new { id });
+
                 }
                 else
                 {

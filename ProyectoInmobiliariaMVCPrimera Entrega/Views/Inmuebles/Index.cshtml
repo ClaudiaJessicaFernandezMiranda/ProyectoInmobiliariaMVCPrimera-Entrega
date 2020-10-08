@@ -4,18 +4,60 @@
     ViewData["Title"] = "Index";
 }
 
+
     <div class="card bg-light border border-primary">
         <div class="card-header border-bottom border-primary bg-light">
-            <a class="btn btn-primary text-white mr-2" asp-action="Create">Crear Inmueble</a>
+          
+
+            
+
+            <form asp-action="Index" method="post">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <a class="btn btn-primary mr-2 rounded" asp-action="Create">Crear Inmueble</a>
+
+                        <a class="btn btn-outline-danger rounded-left" asp-action="Index" asp-route-id="1" data-tip="tooltip" data-placement="top" title="Ver todos">
+                            <i class="fas fa-list-ul"></i>
+                        </a>
+                        <a class="btn btn-outline-danger" asp-action="Index" asp-route-id="2" data-tip="tooltip" data-placement="top" title="Ver disponibles">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a class="btn btn-outline-danger rounded-right" asp-action="Index" asp-route-id="3" data-tip="tooltip" data-placement="top" title="Ver no disponibles">
+                            <i class="fas fa-eye-slash"></i>
+
+                        </a>
+
+
+                        <span class="input-group-text ml-5 rounded-left">De</span>
+                    </div>
+
+
+
+                    <input type="date" name="inicio" class="form-control">
+
+                    <div class="input-group-prepend">
+
+                        <span class="input-group-text">Hasta</span>
+
+                    </div>
+                    <input type="date" name="fin" class="form-control">
+                    <div class="input-group-prepend">
+
+                        <button class="btn btn-primary rounded-right" type="submit" data-tip="tooltip" data-placement="top" title="Listar Inmuebles" href="">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+
+                </div>
+            </form>
+
         </div>
         <div class="card-body">
             <h5 class="card-title text-primary">Lista actual de inmuebles</h5>
             <table class="table table-hover table-bordered w-100" id="dtHorizontalVertical">
                 <thead class="table-danger">
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.InmuebleId)
-                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Direccion)
                         </th>
@@ -41,52 +83,55 @@
                             @*@Html.DisplayNameFor(model => model.PropietarioId)*@
                             Propietario
                         </th>
+                        <th style="display:none;">
+                            @Html.DisplayNameFor(model => model.Propietario.Dni)
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.InmuebleId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Direccion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Ambientes)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Tipo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Costo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Superficie)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Latitud)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Longitud)
-                            </td>
-                            <td>
-                                @*@Html.DisplayFor(modelItem => item.PropietarioId)*@
-                                @(item.Propietario.Nombre + " " + item.Propietario.Apellido)
-                            </td>
-                            <td class="d-flex justify-content-center">
-                                <div class="btn-group" role="group">
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ambientes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Costo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Superficie)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Latitud)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Longitud)
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.PropietarioId)*@
+                            @(item.Propietario.Nombre + " " + item.Propietario.Apellido)
+                        </td>
+                        <td style="display:none;">
+                            @Html.DisplayFor(modelItem => item.Propietario.Dni)
+                        </td>
+                        <td class="d-flex justify-content-center">
+                            <div class="btn-group" role="group">
 
-                                    <a asp-action="Edit" asp-route-id="@item.InmuebleId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                    <a asp-action="Delete" asp-route-id="@item.InmuebleId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
-                                    @*@Html.ActionLink("Details", "Details", new { id=item.InmuebleId}) |*@
-                                </div>
+                                <a asp-action="Edit" asp-route-id="@item.InmuebleId" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.InmuebleId" class=" btn btn-danger"><i class="fas fa-minus-square"></i></a>
+                                @*@Html.ActionLink("Details", "Details", new { id=item.InmuebleId}) |*@
+                            </div>
 
 
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

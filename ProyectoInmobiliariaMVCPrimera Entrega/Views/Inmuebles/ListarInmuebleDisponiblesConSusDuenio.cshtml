@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ProyectoInmobiliariaMVCPrimera_Entrega.Models.Inmueble>
+
+@{
+    ViewData["Title"] = "Lista Inmueble Disponibles Con Sus Dueño";
+}
+
+
+
+<div class="card bg-light border border-primary">
+
+
+    <div class="card-body">
+
+        <h5 class="card-title text-primary">Lista Inmueble Disponibles Con Sus Dueño</h5>
+
+        <div class="row scrollspy-example" id="listAlquileres">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 contenedor mb-5">
+                    <div class="card border border-primary">
+                        <img class="border-bottom border-primary w-100" src="https://images7.alphacoders.com/436/thumb-1920-436350.jpg">
+                        @*<div class="card-header bg-transparent border-primary"> </div>*@
+                        <div class="card-body">
+
+                            <h5 class="card-title">Propiedad</h5>
+
+                            <div class="btn-group w-100">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#MM@(item.InmuebleId)">Ver más</button>
+
+                            </div>
+                            <div id="MM@(item.InmuebleId)" class="collapse">
+                                <div class="mt-2">
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Direccion" href="#">@Html.DisplayFor(modelItem => item.Direccion)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Ambientes" href="#">@Html.DisplayFor(modelItem => item.Ambientes)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Tipo Inmueble" href="#">@Html.DisplayFor(modelItem => item.Tipo)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Costo" href="#">@Html.DisplayFor(modelItem => item.Costo)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Superficie" href="#">@Html.DisplayFor(modelItem => item.Superficie)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Latitud" href="#">@Html.DisplayFor(modelItem => item.Latitud)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Longitud" href="#">@Html.DisplayFor(modelItem => item.Longitud)</a>
+                                </div>
+                            </div>
+
+
+
+                            <h5 class="card-title mt-3">Propietario</h5>
+
+                            <div class="btn-group w-100">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#MM@(item.Propietario.PropietarioId)">Ver más</button>
+
+                            </div>
+                            <div id="MM@(item.Propietario.PropietarioId)" class="collapse">
+                                <div class="mt-2">
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Apellido" href="#">@Html.DisplayFor(modelItem => item.Propietario.Apellido)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Nombre" href="#">@Html.DisplayFor(modelItem => item.Propietario.Nombre)</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Telefono" href="#">@Html.DisplayFor(modelItem => item.Propietario.Telefono))</a>
+                                    <a class="badge badge-primary" data-tip="tooltip" data-placement="top" title="Email" href="#">@Html.DisplayFor(modelItem => item.Propietario.Email)</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            }
+        </div>
+
+    </div>
+</div>

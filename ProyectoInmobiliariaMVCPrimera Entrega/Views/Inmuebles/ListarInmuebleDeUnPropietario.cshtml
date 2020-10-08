@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ProyectoInmobiliariaMVCPrimera_Entrega.Models.Inmueble>
+
+@{
+    ViewData["Title"] = "ListarInmuebleDeUnPropietario";
+}
+
+<h5 class="card-title text-primary">Listar Todos los inmuebles que le correspondan a un propietario</h5>
+
+<div class="card bg-light border border-primary">
+    <div class="card-header border-bottom border-primary bg-light">
+        <form class="card card-sm" asp-controller="Inmuebles" asp-action="ListarInmuebleDeUnPropietario" method="post">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <a class="btn btn-md btn-primary" data-tip="tooltip" data-placement="top" title="Agregar Vehículo">
+                        <i class="fas fa-plus-circle fa-lg"></i>
+                    </a>
+                </div>
+
+                <input class="form-control border border-primary" name="dni" type="search" placeholder="DNI Propietario.." aria-label="Buscar">
+
+                <div class="input-group-append">
+                    <button class="btn btn-md btn-primary" type="submit" data-tip="tooltip" data-placement="top" title="Buscar Inquilino" href="">
+                        <i class="fas fa-search fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-body">
+
+
+
+        @if (Model != null && Model.Count() != 0)
+        {
+            var items = Model.ElementAt(0);
+            <div class="card-body">
+                <h5 class="card-title text-primary">Propietario</h5>
+                <table class="table table-hover table-bordered w-100" id="dtHorizontalVertical">
+                    <thead class="table-danger">
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.ElementAt(0).Propietario.Apellido)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ElementAt(0).Propietario.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ElementAt(0).Propietario.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ElementAt(0).Propietario.Telefono)
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => items.Propietario.Apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => items.Propietario.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => items.Propietario.Email)
+                            <td>
+                                @Html.DisplayFor(modelItem => items.Propietario.Telefono)
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+            <h5 class="card-title text-primary">Lista de Inmuebles</h5>
+            <div class="row scrollspy-example">
+                <!-- Free Tier -->
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 contenedor">
+                        <div class="card border border-primary">
+                            <img class="border-bottom border-primary w-100" src="https://images7.alphacoders.com/436/thumb-1920-436350.jpg">
+
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Direccion)</h5>
+
+                                <div id="MM@(item.InmuebleId)" class="collapse">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            Superficie: @Html.DisplayFor(modelItem => item.Superficie)
+                                        </li>
+                                        <li class="list-group-item">
+                                            Monto: @Html.DisplayFor(modelItem => item.Costo)
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

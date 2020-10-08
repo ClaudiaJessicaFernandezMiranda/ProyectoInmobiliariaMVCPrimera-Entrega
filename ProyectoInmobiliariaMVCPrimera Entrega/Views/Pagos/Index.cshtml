@@ -8,7 +8,7 @@
             <form class="card card-sm" asp-controller="Pagos" asp-action="Index" method="post">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <a class="btn btn-md btn-primary" data-tip="tooltip" data-placement="top" title="Agregar Vehículo">
+                        <a class="btn btn-md btn-primary" data-tip="tooltip" data-placement="top" title="Hola">
                             <i class="fas fa-plus-circle fa-lg"></i>
                            
                         </a>
@@ -64,7 +64,6 @@
                             <div class="btn-group w-100">
                                 <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#MM@(item.AlquilerId)">Ver más</button>
 
-                                <a asp-controller="Pagos" asp-action="Create" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary" data-tip="tooltip" data-placement="top" title="Realizar pago"><i class="fas fa-money-bill-alt fa-lg"></i></a>
                                 <a asp-controller="Pagos" asp-action="ListaPago" asp-route-id="@item.AlquilerId" class="btn btn-outline-secondary" data-tip="tooltip" data-placement="top" title="Lista de pagos"><i class="fas fa-list-ol fa-lg"></i></a>
 
                             </div>

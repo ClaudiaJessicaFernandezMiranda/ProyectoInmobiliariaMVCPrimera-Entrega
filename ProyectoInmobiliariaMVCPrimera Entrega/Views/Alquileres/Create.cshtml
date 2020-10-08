@@ -19,22 +19,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Descripcion" class="control-label"></label>
-                    <input asp-for="Descripcion" class="form-control" />
+                    <input asp-for="Descripcion" class="form-control" required />
                     <span asp-validation-for="Descripcion" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="FechaAlta" class="control-label"></label>
-                    <input asp-for="FechaAlta" class="form-control" />
+                    <input type="date" asp-for="FechaAlta" class="form-control" required />
                     <span asp-validation-for="FechaAlta" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="FechaBaja" class="control-label"></label>
-                    <input asp-for="FechaBaja" class="form-control" />
+                    <input type="date" asp-for="FechaBaja" class="form-control" required />
                     <span asp-validation-for="FechaBaja" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Monto" class="control-label"></label>
-                    <input asp-for="Monto" class="form-control" />
+                    <input asp-for="Monto" class="form-control" required />
                     <span asp-validation-for="Monto" class="text-danger"></span>
                 </div>
 

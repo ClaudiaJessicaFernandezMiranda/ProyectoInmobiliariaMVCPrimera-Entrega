@@ -24,12 +24,27 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
         }
 
         // GET: Inmuebles
-        public ActionResult Index()
+        public ActionResult Index(int id, DateTime? inicio, DateTime? fin)
         {
             var lista = repositorioInmueble.ObtenerTodos();
+            if (id == 2)
+            {
+                lista = repositorioInmueble.ObtenerTodosDisponible();
+            }
+            else if (id == 3)
+            {
+                lista = repositorioInmueble.ObtenerTodosNoDisponible();
+            }
+            else if (inicio != null && fin != null)
+            {
+                lista = repositorioInmueble.ObtenerTodosRangoDeFechas(inicio, fin);
+            }
+            else
+            {
+                lista = repositorioInmueble.ObtenerTodos();
+            }
             return View(lista);
-        }
-
+        } 
         // GET: Inmuebles/Details/5
         public ActionResult Details(int id)
         {
@@ -127,9 +142,28 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Controllers
                 return View();
             }
 
-        }        
+        }
+
+        public ActionResult ListarInmuebleDisponiblesConSusDuenio()
+        {
+            var lista = repositorioInmueble.ListarLosInmueblesQueDisponiblesConSuDuenio();
+            return View(lista);
+        }
 
 
-       
+        public ActionResult ListarInmuebleDeUnPropietario(string dni)
+        {
+            try
+            {
+                var lista = repositorioInmueble.ListarTodosLosInmueblesQueLesCorrespondanAUnPropietario(dni);
+                return View(lista);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
     }
 }

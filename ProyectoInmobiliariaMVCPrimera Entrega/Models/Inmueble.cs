@@ -18,6 +18,7 @@ namespace ProyectoInmobiliariaMVCPrimera_Entrega.Models
         public decimal Superficie { get; set; }
         public decimal Latitud { get; set; }
         public decimal Longitud { get; set; }
+        public bool EstaPublicado { get; set; }
         public int PropietarioId { get; set; }
         public Propietario Propietario { get; set; }
     }
